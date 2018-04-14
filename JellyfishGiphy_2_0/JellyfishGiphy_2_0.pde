@@ -2,6 +2,8 @@ import processing.video.*;
 
 Bubble[] bubbles = new Bubble[20];
 
+bag[] bag_1 = new bag[4];
+
 Capture video;
 PImage prev;
 float threshold = 25;
@@ -15,9 +17,16 @@ float threshold = 25;
   int numFrames = 24;
   int currentFrame = 0;
   PImage[] jellyfishGiphy = new PImage[numFrames];
+  
+  PImage bag;
 
 void setup() {
   size(1280,720);
+  
+  bag = loadImage ("bag-1.png");
+  for (int i = 0; i < bag_1.length; i++) {
+    bag_1 [i] = new bag(64);
+  }
   String[] cameras = Capture.list();
   printArray(cameras);
   video = new Capture(this, width, height, 30);
@@ -136,7 +145,11 @@ void draw() {
     bubbles[i].display();
     bubbles[i].top();
     }
-
+  for (int i = 0; i < bag_1.length; i++) {
+    bag_1[i].ascend();
+    bag_1[i].display();
+    bag_1[i].top();
+  }
 
 }
 
