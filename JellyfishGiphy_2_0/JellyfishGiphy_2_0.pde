@@ -31,7 +31,8 @@ void setup() {
   }
 
   for (int i = 0; i < bubbles.length; i++) {
-    bubbles[i] = new Bubble(i*4);
+    //bubbles[i] = new Bubble(i*4);
+    bubbles[i] = new Bubble(random(64));
     //bubbles[i] = new Bubble(64);
   }
 }
