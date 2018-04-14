@@ -3,9 +3,9 @@ class Bubble {
   float x;
   float y;
   float diameter;
-
+  
   boolean active = false;
-
+  
   float yspeed;
 
   Bubble(float tempD) {
