@@ -2,7 +2,7 @@ import processing.video.*;
 
 Bubble[] bubbles = new Bubble[20];
 
-bag[] bag_1 = new bag[4];
+bag[] bag_1 = new bag[5];
 
 Capture video;
 PImage prev;
@@ -63,8 +63,8 @@ void draw() {
 
 
 
-  //threshold = map(mouseX, 0, width, 0, 100);
-  //threshold = 80;
+  threshold = map(mouseX, 0, width, 0, 100);
+  threshold = 80;
 
   int count = 0;
 
@@ -141,15 +141,15 @@ void draw() {
   }
 
      for (int i = 0; i < bubbles.length; i++) {
-    bubbles[i].ascend();
-    bubbles[i].display();
-    bubbles[i].top();
-    }
+      bubbles[i].ascend();
+      bubbles[i].display();
+      bubbles[i].top();
+      }
   for (int i = 0; i < bag_1.length; i++) {
-    bag_1[i].ascend();
-    bag_1[i].display();
-    bag_1[i].top();
-  }
+      bag_1[i].ascend();
+      bag_1[i].display();
+      bag_1[i].top();
+      }
 
 }
 

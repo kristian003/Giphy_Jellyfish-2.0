@@ -12,7 +12,7 @@ class bag {
     x = random(width);
     y = height;
     diameter = tempD;
-    yspeed = random(5,10);
+    yspeed = random(.8,5);
   }
 
   void ascend() {
