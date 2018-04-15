@@ -3,6 +3,7 @@
   if (jellyfish. > 0 || bag.length() > 0) {
     length();
 
+  }
   
   for (int i = 0; i <= jellyfish.length(); i++) {
     
