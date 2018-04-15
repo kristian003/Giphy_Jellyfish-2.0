@@ -1,6 +1,6 @@
 
 
-  if (jellyfish. > 0 || bag.length() > 0) {
+  if (jellyfish.length > 0 || bag.length() > 0) {
     length();
 
   }
