@@ -4,15 +4,17 @@ class bag {
   float y;
   float diameter;
   
+  PImage img;
   boolean active = false;
   
   float yspeed;
 
-  bag(float tempD) {
+  bag(PImage tempImg, float tempD) {
     x = random(width);
     y = height;
     diameter = tempD;
     yspeed = random(.8,5);
+    img = tempImg;
   }
 
   void ascend() {
@@ -22,7 +24,7 @@ class bag {
 
   void display() {
     imageMode(CENTER);
-    image(bag,x,y,300,300);
+    image(img,x,y,275,275);
   }
 
   void top() {

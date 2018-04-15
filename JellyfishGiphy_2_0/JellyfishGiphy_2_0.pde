@@ -1,12 +1,11 @@
 import processing.video.*;
-
-Bubble[] bubbles = new Bubble[20];
-
-bag[] bag_1 = new bag[5];
+Bubble[] bubbles = new Bubble[100];
+PImage[] trash = new PImage[5];
+bag[] bags = new bag[6];
 
 Capture video;
-PImage prev;
-float threshold = 25;
+  PImage prev;
+  float threshold = 25;
 
   float motionX = 0;
   float motionY = 0;
@@ -18,14 +17,16 @@ float threshold = 25;
   int currentFrame = 0;
   PImage[] jellyfishGiphy = new PImage[numFrames];
   
-  PImage bag;
-
-void setup() {
+  void setup() {
   size(1280,720);
   
-  bag = loadImage ("bag-1.png");
-  for (int i = 0; i < bag_1.length; i++) {
-    bag_1 [i] = new bag(64);
+  for (int i = 0; i < trash.length; i ++){
+  trash[i] = loadImage("bag"+i+".png");
+  }
+  
+  for (int i = 0; i < bags.length; i++) {
+    int index = int(random(0,trash.length));
+    bags [i] = new bag(trash[index],64);
   }
   String[] cameras = Capture.list();
   printArray(cameras);
@@ -40,6 +41,7 @@ void setup() {
   }
 
   for (int i = 0; i < bubbles.length; i++) {
+    //different display options
     //bubbles[i] = new Bubble(i*4);
     bubbles[i] = new Bubble(random(64));
     //bubbles[i] = new Bubble(64);
@@ -145,10 +147,10 @@ void draw() {
       bubbles[i].display();
       bubbles[i].top();
       }
-  for (int i = 0; i < bag_1.length; i++) {
-      bag_1[i].ascend();
-      bag_1[i].display();
-      bag_1[i].top();
+  for (int i = 0; i < bags.length; i++) {
+      bags[i].ascend();
+      bags[i].display();
+      bags[i].top();
       }
 
 }
