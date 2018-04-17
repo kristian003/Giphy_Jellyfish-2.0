@@ -1,9 +1,11 @@
 import processing.video.*;
 Bubble[] bubbles = new Bubble[100];
 PImage[] trash = new PImage[5];
-bag[] bags = new bag[6];
+//bag[] bags = new bag[6];
 
 ArrayList<bag> bagsA = new ArrayList<bag>();
+
+int score = 0;
 
 Capture video;
 PImage prev;
@@ -19,6 +21,10 @@ int numFrames = 24;
 int currentFrame = 0;
 PImage[] jellyfishGiphy = new PImage[numFrames];
 
+int prevMillis = 0;
+int interval = 5000;
+int jbThreshold = 150;
+
 void setup() {
   size(1280, 720);
 
@@ -26,12 +32,12 @@ void setup() {
     trash[i] = loadImage("bag"+i+".png");
   }
 
-  for (int i = 0; i < bags.length; i++) {
-    int index = int(random(0, trash.length));
-    bags [i] = new bag(trash[index], 64);
-  }
+  //for (int i = 0; i < bags.length; i++) {
+  //  int index = int(random(0, trash.length));
+  //  bags [i] = new bag(trash[index], 64);
+  //}
 
-  for (int i = 0; i < 6; i++) {
+  for (int i = 0; i < 1; i++) {
     int index = int(random(0, trash.length));
     bagsA.add(new bag(trash[index], 64)) ;
   }
@@ -154,23 +160,39 @@ void draw() {
     bubbles[i].display();
     bubbles[i].top();
   }
-  for (int i = 0; i < bags.length; i++) {
-    bags[i].ascend();
-    bags[i].display();
-    bags[i].top();
-  }
-
+  //for (int i = 0; i < bags.length; i++) {
+  //  bags[i].ascend();
+  //  bags[i].display();
+  //  bags[i].top();
+  //}
+if(bagsA.size() > 0){
   for (int i = 0; i < bagsA.size(); i++) {
     bag curBag = bagsA.get(i);
     curBag.ascend();
     curBag.display();
     curBag.top();
+    
+    float jellyDist = dist(lerpX,lerpY, curBag.x, curBag.y);
+    println(jellyDist);
+    if(jellyDist < jbThreshold){    
+      bagsA.remove(i);
+      score += 1;
+    }
 
   }
+}
+  
+  if(millis() - prevMillis >= interval){
+    int index = int(random(0, trash.length));
+    bagsA.add(new bag(trash[index], 64));
+    prevMillis = millis();
+  }
+  
+  
 
   textSize(32);
   fill(255);
-  text("Counter", 30, 60);
+  text("Counter: "+ score, 30, 60);
 }
 
 float distSq(float x1, float y1, float z1, float x2, float y2, float z2) {
