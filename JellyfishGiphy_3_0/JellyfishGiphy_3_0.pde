@@ -26,7 +26,7 @@ int interval = 5000;
 int jbThreshold = 150;
 
 void setup() {
-  size(1280, 720);
+  size(1280, 760);
 
   for (int i = 0; i < trash.length; i ++) {
     trash[i] = loadImage("bag"+i+".png");
