@@ -1,4 +1,9 @@
 import processing.video.*;
+
+  
+import processing.sound.*;
+SoundFile file;
+
 Bubble[] bubbles = new Bubble[100];
 PImage[] trash = new PImage[5];
 //bag[] bags = new bag[6];
@@ -26,7 +31,9 @@ int interval = 5000;
 int jbThreshold = 150;
 
 void setup() {
-  size(1280, 760);
+  size(1280, 720);
+  
+  
 
   for (int i = 0; i < trash.length; i ++) {
     trash[i] = loadImage("bag"+i+".png");
@@ -177,6 +184,8 @@ if(bagsA.size() > 0){
     if(jellyDist < jbThreshold){    
       bagsA.remove(i);
       score += 1;
+      file = new SoundFile(this, "bubblePop.wav");
+      file.play();
     }
 
   }
