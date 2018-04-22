@@ -1,7 +1,6 @@
 import processing.video.*;
-
-  
 import processing.sound.*;
+
 SoundFile file;
 
 Bubble[] bubbles = new Bubble[100];
@@ -78,13 +77,8 @@ void draw() {
 
   background(27, 45, 65);
 
-
-
-
   video.loadPixels();
   prev.loadPixels();
-
-
 
   threshold = map(mouseX, 0, width, 0, 100);
   threshold = 80;
@@ -119,11 +113,11 @@ void draw() {
         //strokeWeight(1);
         //point(x, y);
 
-        ////Revert to original camera view.
-        //avgX += x;
+        //Revert to original camera view.
+        avgX += x;
 
         //Flip Video
-        avgX += video.width-x;
+        //avgX += video.width-x;
 
         avgY += y;
         count++;
@@ -180,7 +174,7 @@ if(bagsA.size() > 0){
     curBag.top();
     
     float jellyDist = dist(lerpX,lerpY, curBag.x, curBag.y);
-    println(jellyDist);
+    //println(jellyDist);
     if(jellyDist < jbThreshold){    
       bagsA.remove(i);
       score += 1;

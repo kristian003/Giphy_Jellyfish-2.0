@@ -13,7 +13,7 @@ class bag {
     x = random(width);
     y = height;
     diameter = tempD;
-    yspeed = random(.8,5);
+    yspeed = random(.2,8);
     img = tempImg;
   }
 
